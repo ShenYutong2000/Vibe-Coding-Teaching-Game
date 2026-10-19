@@ -1,0 +1,5 @@
+:root { color-scheme: light; }
+html { min-width: 280px; min-height: 100%; background: #f6f6fb; }
+body { min-width: 280px; min-height: 100vh; margin: 0; }
+button:focus-visible, textarea:focus-visible, input:focus-visible { outline: 3px solid #a79ef4; outline-offset: 2px; }
+::selection { color: #373454; background: #e2dfff; }
