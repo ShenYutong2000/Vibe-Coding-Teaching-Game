@@ -8,7 +8,7 @@ Use a three-minute interactive path to demonstrate the product idea: a child sha
 
 - Idea: I want to make a game where a space cat collects stars and dodges meteors.
 - One key question from the AI: What happens when the cat touches a meteor?
-- This round’s default scope: Move the space cat with the arrow keys, score when it touches a star, and win by collecting 3 stars. On the design map, the child can reduce the goal to 1 or 2 stars and chooses the meteor rule.
+- This round’s default scope: Move the space cat, score when it touches a star, and win by collecting 3 stars. On the design map, the child can choose a player, choose arrow keys or on-screen controls, set a goal of 1–3 stars, and choose the meteor rule.
 - Prediction: What do you think will happen when the cat touches a star? The child can choose “The score goes up by 1,” “The cat gets bigger,” or “Nothing happens,” or skip.
 - Fixed debugging clue: The score does not go up after the cat touches a star.
 
@@ -17,7 +17,7 @@ Use a three-minute interactive path to demonstrate the product idea: a child sha
 | Screen | What the child does | What the AI / prototype shows | Skill practiced | Next state |
 | --- | --- | --- | --- | --- |
 | Your idea | Edit a free-form idea and get started | Clearly explains that the current path uses the space-cat example | Express a goal and share an idea | Design map |
-| Design map | Explore eight elements, set a goal size, and choose a meteor rule | Asks one guiding question and shows stickers and statuses | Set scope, break down a system, and define a rule | Mission; can return to edit the idea |
+| Design map | Choose a character, movement controls, goal size, and meteor rule | Asks one guiding question and shows interactive stickers and statuses | Set scope, break down a system, define a rule, and connect choices to behavior | Mission; can return to edit the idea |
 | Mission | Review the mission card, edit the rule, or confirm | Turns the idea into one small playable loop | Break down a task and limit scope | Build and predict |
 | Build and predict | Choose an expected result or skip | Shows a demo build state and mission details | Predict system behavior | Playtest and review |
 | Playtest and review | Move the cat with arrow keys or on-screen controls, collect stars, encounter the meteor, then choose one of four outcomes | Runs a small game configured by the confirmed meteor rule | Test and evaluate | As expected → next round; different but liked / changed mind → map; did not work → detective |
@@ -26,7 +26,7 @@ Use a three-minute interactive path to demonstrate the product idea: a child sha
 
 ## Interaction details
 
-- The design map shows players, goals, actions, rules, resources, challenges, boundaries, and outcomes. The four core elements light up during the first round; the rest are marked “Explore later.” After playtesting, goals, actions, rules, and outcomes are marked “Playtested.”
+- The design map shows players, goals, actions, rules, resources, challenges, boundaries, and outcomes. Players, goals, actions, and rules have interactive choices; outcomes reflect the selected goal. Resources and boundaries are marked “Explore later.” After playtesting, goals, actions, rules, and outcomes are marked “Playtested.”
 - “Different, but I like it” keeps the discovery and returns it to the map. “I changed my mind” also returns to the map. Neither path clears the idea or rule choice.
 - “It didn’t work” opens a five-step detective flow: observe → guess → test → fix → retest. The test result shows evidence that supports or rules out the child’s guess.
 - “My new idea” opens the idea-entry screen. The two suggestions and the child’s own idea are equally visible options.
@@ -35,7 +35,13 @@ Use a three-minute interactive path to demonstrate the product idea: a child sha
 - The goal sticker offers 1, 2, or 3 stars. The selected goal updates the mission card, the number of stars in the game, the score display, and the win condition. Changing the goal resets the game so the new scope starts cleanly.
 - The meteor rule selected on the design map controls the simulation: lose one collected star, return to the starting point, or take no penalty. A custom rule is shown in the mission, but this demo treats it as no penalty and explains that behavior in the game message.
 - The detective screen remains a guided sample bug scenario. It teaches the observe → guess → test → fix → retest loop rather than altering the playable game’s scoring logic.
+- The playtest stores the child’s score, goal, move count, latest observation, and meteor rule. The first three review choices unlock after the child collects a star; the prediction feedback then compares the guess with the observed score change.
+- Choosing keys, on-screen controls, or both changes the available movement controls in the game. Choosing a character changes its game sprite and the mission text.
 
-## Follow-up work for Day 2
+## Stage 3 status: reusable project kits
 
-Replace the static sample preview with a playable single-screen game. Define how the design-map fields configure that game, then decide how playtest observations will reflect the rules the child confirmed.
+The idea screen now offers two playable starters: a space adventure and an ocean adventure. Each kit stores its own characters, collectible, obstacle, board locations, start point, and guiding question. The design map, mission, prediction, playable board, collision behavior, and detective scenario read from the selected kit.
+
+Children can keep any free-form idea while choosing a starter to power the prototype. If they switch starters while their idea still matches the previous sample, the example text follows the new starter; edited text is preserved. This demonstrates a reusable configuration boundary without implying that arbitrary ideas are already converted into a playable game.
+
+The “AI Sidekick” remains scripted sample guidance. No model provider or backend is connected. Next, connect a constrained planning service that proposes map elements and one small task at a time, while the child confirms or edits every decision.

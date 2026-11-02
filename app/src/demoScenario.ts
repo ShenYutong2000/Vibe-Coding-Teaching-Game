@@ -1,12 +1,12 @@
 export const demoIdea = 'I want to make a game where a space cat collects stars and dodges meteors.'
 
-export const demoQuestion = 'What happens when the cat touches a meteor?'
+export const demoQuestion = 'What happens when the player touches an obstacle?'
 
 export type RuleChoice = 'lose-star' | 'restart' | 'nothing' | 'custom'
 export type MapElementId = 'players' | 'objectives' | 'procedures' | 'rules' | 'resources' | 'conflict' | 'boundaries' | 'outcome'
 
 export const ruleOptions: { id: RuleChoice; label: string }[] = [
-  { id: 'lose-star', label: 'Lose 1 star' },
+  { id: 'lose-star', label: 'Lose 1 item' },
   { id: 'restart', label: 'Return to start' },
   { id: 'nothing', label: 'No penalty' },
   { id: 'custom', label: 'I’ll decide' },
